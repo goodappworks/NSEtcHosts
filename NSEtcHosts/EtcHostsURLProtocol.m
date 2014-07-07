@@ -66,6 +66,8 @@ static NSString * const EtcHostModifiedPropertyKey = @"EtcHostModifiedProperty";
     URLComponents.host = [[[self class] sharedConfiguration] IPAddressForHostName:URLComponents.host];
 
     mutableRequest.URL = [URLComponents URL];
+    
+    [mutableRequest setValue:request.URL.host forHTTPHeaderField:@"Host"];
 
     [NSURLProtocol setProperty:@(YES) forKey:EtcHostModifiedPropertyKey inRequest:mutableRequest];
 
